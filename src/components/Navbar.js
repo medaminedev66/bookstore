@@ -20,7 +20,7 @@ class Navbar extends PureComponent {
         <ul>
           {links.map((link) => (
             <li key={link.id}>
-              <NavLink to={link.path} activeClassName="active-link">
+              <NavLink to={link.path} className="active-link">
                 {link.text}
               </NavLink>
             </li>

@@ -1,6 +1,6 @@
-import React from 'react';
+import { React, PureComponent } from 'react';
 
-class Categories extends React.Component {
+class Categories extends PureComponent {
   render() {
     return (
       <div>

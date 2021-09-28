@@ -1,18 +1,25 @@
-import React from 'react';
+import { React, PureComponent } from 'react';
+import PropTypes from 'prop-types';
 import styles from './books.module.css';
 
-class Book extends React.Component {
+class Book extends PureComponent {
   render() {
+    const { title, author } = this.props;
     return (
       <div className={styles.book}>
         <div className={styles.info}>
-          <p>{this.props.title}</p>
-          <p>{this.props.author}</p>
+          <p>{title}</p>
+          <p>{author}</p>
         </div>
-        <button>Delete</button>
+        <button type="button">Delete</button>
       </div>
     );
   }
 }
+
+Book.propTypes = {
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+};
 
 export default Book;
