@@ -1,7 +1,8 @@
 import { React } from 'react';
+import PropTypes from 'prop-types';
 import Book from './Book';
 
-const BooksList = () => {
+const BooksList = (props) => {
   const books = [
     {
       id: 1,
@@ -15,13 +16,24 @@ const BooksList = () => {
     },
   ];
 
+  const { removeBook } = props;
   return (
     <div className="list">
       {books.map((book) => (
-        <Book key={book.id} title={book.title} author={book.author} />
+        <Book
+          key={book.id}
+          title={book.title}
+          author={book.author}
+          book={book}
+          removeBook={removeBook}
+        />
       ))}
     </div>
   );
+};
+
+BooksList.propTypes = {
+  removeBook: PropTypes.func.isRequired,
 };
 
 export default BooksList;

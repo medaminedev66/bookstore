@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import BooksList from './BooksList';
 import InputBook from './InputBook';
-import { addBook } from '../../redux/books/books';
+import { addBook, removeBook } from '../../redux/books/books';
 
 const BooksContainer = () => {
   const dispatch = useDispatch();
@@ -19,10 +19,14 @@ const BooksContainer = () => {
     dispatch(addBook(newBook));
   };
 
+  const remove = (book) => {
+    dispatch(removeBook(book));
+  };
+
   return (
     <div className="container">
       <InputBook addBook={submitBookToStore} />
-      <BooksList />
+      <BooksList removeBook={remove} />
     </div>
   );
 };
