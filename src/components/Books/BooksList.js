@@ -1,31 +1,27 @@
-import React from 'react';
+import { React } from 'react';
 import Book from './Book';
 
-class BooksList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = [
-      {
-        title: 'The power',
-        Author: 'Amine',
-      },
-      {
-        title: 'The power of focusing',
-        Author: 'Mark',
-      },
-    ];
-  }
+const BooksList = () => {
+  const books = [
+    {
+      id: 1,
+      title: 'The Power of Habit',
+      author: 'Charles Duhigg',
+    },
+    {
+      id: 2,
+      title: 'the 5am club',
+      author: 'Robin Sharma',
+    },
+  ];
 
-  render() {
-    const books = this.state;
-    return (
-      <div className="list">
-        {books.map((book) => (
-          <Book key={book.title} title={book.title} author={book.author} />
-        ))}
-      </div>
-    );
-  }
-}
+  return (
+    <div className="list">
+      {books.map((book) => (
+        <Book key={book.id} title={book.title} author={book.author} />
+      ))}
+    </div>
+  );
+};
 
 export default BooksList;

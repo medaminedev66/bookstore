@@ -1,16 +1,44 @@
-import { React, PureComponent } from 'react';
+import { React } from 'react';
+import PropTypes from 'prop-types';
 import styles from './books.module.css';
 
-class InputBook extends PureComponent {
-  render() {
-    return (
-      <div className={styles.booksForm}>
-        <input type="text" placeholder="title of the book..." />
-        <input type="text" placeholder="Auther of the book..." />
-        <button type="button">Add</button>
-      </div>
-    );
-  }
-}
+const InputBook = (props) => {
+  let title = '';
+  let author = '';
+
+  const addTitle = (e) => {
+    title = e.target.value;
+  };
+
+  const addAuthor = (e) => {
+    author = e.target.value;
+  };
+
+  const submitBookToStore = () => {
+    props.addBook(title, author);
+  };
+
+  return (
+    <div className={styles.booksForm}>
+      <input
+        type="text"
+        placeholder="title of the book..."
+        onChange={addTitle}
+      />
+      <input
+        type="text"
+        placeholder="Author of the book..."
+        onChange={addAuthor}
+      />
+      <button type="button" onClick={submitBookToStore}>
+        Add Book
+      </button>
+    </div>
+  );
+};
+
+InputBook.propTypes = {
+  addBook: PropTypes.func.isRequired,
+};
 
 export default InputBook;
