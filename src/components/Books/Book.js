@@ -11,7 +11,7 @@ const Book = (props) => {
     <div className={styles.book}>
       <div className={styles.info}>
         <p>{book.title}</p>
-        <p>{book.author}</p>
+        <p>{book.category}</p>
       </div>
       <button
         type="button"

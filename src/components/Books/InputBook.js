@@ -4,18 +4,18 @@ import styles from './books.module.css';
 
 const InputBook = (props) => {
   let title = '';
-  let author = '';
+  let category = '';
 
   const addTitle = (e) => {
     title = e.target.value;
   };
 
   const addAuthor = (e) => {
-    author = e.target.value;
+    category = e.target.value;
   };
 
   const submitBookToStore = () => {
-    props.addBook(title, author);
+    props.addBook(title, category);
   };
 
   return (
@@ -27,7 +27,7 @@ const InputBook = (props) => {
       />
       <input
         type="text"
-        placeholder="Author of the book..."
+        placeholder="Category of the book..."
         onChange={addAuthor}
       />
       <button type="button" onClick={submitBookToStore}>
