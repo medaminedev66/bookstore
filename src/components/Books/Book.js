@@ -1,25 +1,34 @@
-import { React, PureComponent } from 'react';
+import { React } from 'react';
 import PropTypes from 'prop-types';
 import styles from './books.module.css';
 
-class Book extends PureComponent {
-  render() {
-    const { title, author } = this.props;
-    return (
-      <div className={styles.book}>
-        <div className={styles.info}>
-          <p>{title}</p>
-          <p>{author}</p>
-        </div>
-        <button type="button">Delete</button>
+const Book = (props) => {
+  const { book, removeBook } = props;
+  const remove = (book) => {
+    removeBook(book);
+  };
+  return (
+    <div className={styles.book}>
+      <div className={styles.info}>
+        <p>{book.title}</p>
+        <p>{book.author}</p>
       </div>
-    );
-  }
-}
+      <button
+        type="button"
+        onClick={() => {
+          remove(book);
+        }}
+      >
+        Delete
+      </button>
+    </div>
+  );
+};
 
 Book.propTypes = {
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  book: PropTypes.object.isRequired,
+  removeBook: PropTypes.func.isRequired,
 };
 
 export default Book;

@@ -1,16 +1,35 @@
-import { React, PureComponent } from 'react';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { v4 as uuidv4 } from 'uuid';
 import BooksList from './BooksList';
 import InputBook from './InputBook';
+import { addBook, removeBook } from '../../redux/books/books';
 
-class BooksContainer extends PureComponent {
-  render() {
-    return (
-      <div className="container">
-        <InputBook />
-        <BooksList />
-      </div>
-    );
-  }
-}
+const BooksContainer = () => {
+  const books = useSelector((state) => state.booksReducer);
+  const dispatch = useDispatch();
+
+  const submitBookToStore = (title, author) => {
+    const newBook = {
+      id: uuidv4(), // make sure it's unique
+      title,
+      author,
+    };
+
+    // dispatch an action and pass it the newBook object (your action's payload)
+    dispatch(addBook(newBook));
+  };
+
+  const remove = (book) => {
+    dispatch(removeBook(book));
+  };
+
+  return (
+    <div className="container">
+      <InputBook addBook={submitBookToStore} />
+      <BooksList removeBook={remove} books={books} />
+    </div>
+  );
+};
 
 export default BooksContainer;

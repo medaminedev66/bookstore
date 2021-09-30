@@ -1,31 +1,22 @@
-import React from 'react';
+import { React } from 'react';
+import PropTypes from 'prop-types';
 import Book from './Book';
 
-class BooksList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = [
-      {
-        title: 'The power',
-        Author: 'Amine',
-      },
-      {
-        title: 'The power of focusing',
-        Author: 'Mark',
-      },
-    ];
-  }
+const BooksList = (props) => {
+  const { removeBook, books } = props;
+  return (
+    <div className="list">
+      {books.map((book) => (
+        <Book key={book.id} book={book} removeBook={removeBook} />
+      ))}
+    </div>
+  );
+};
 
-  render() {
-    const books = this.state;
-    return (
-      <div className="list">
-        {books.map((book) => (
-          <Book key={book.title} title={book.title} author={book.author} />
-        ))}
-      </div>
-    );
-  }
-}
+BooksList.propTypes = {
+  removeBook: PropTypes.func.isRequired,
+  // eslint-disable-next-line react/forbid-prop-types
+  books: PropTypes.array.isRequired,
+};
 
 export default BooksList;
