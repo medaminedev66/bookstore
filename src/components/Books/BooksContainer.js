@@ -1,28 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import BooksList from './BooksList';
 import InputBook from './InputBook';
-import { addBook, removeBook } from '../../redux/books/books';
+import { removeBook, fetchData, sendData } from '../../redux/books/books';
 
 const BooksContainer = () => {
   const books = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
 
-  const submitBookToStore = (title, author) => {
+  const submitBookToStore = (title, category) => {
     const newBook = {
-      id: uuidv4(), // make sure it's unique
+      item_id: uuidv4(), // make sure it's unique
       title,
-      author,
+      category,
     };
 
     // dispatch an action and pass it the newBook object (your action's payload)
-    dispatch(addBook(newBook));
+    dispatch(sendData(newBook));
   };
 
   const remove = (book) => {
     dispatch(removeBook(book));
   };
+
+  useEffect(() => {
+    dispatch(fetchData());
+  }, [dispatch]);
 
   return (
     <div className="container">
