@@ -1,11 +1,12 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { v4 as uuidv4 } from 'uuid';
 import BooksList from './BooksList';
 import InputBook from './InputBook';
 import { addBook, removeBook } from '../../redux/books/books';
 
 const BooksContainer = () => {
+  const books = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
 
   const submitBookToStore = (title, author) => {
@@ -26,7 +27,7 @@ const BooksContainer = () => {
   return (
     <div className="container">
       <InputBook addBook={submitBookToStore} />
-      <BooksList removeBook={remove} />
+      <BooksList removeBook={remove} books={books} />
     </div>
   );
 };
