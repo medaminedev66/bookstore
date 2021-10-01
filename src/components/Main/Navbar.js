@@ -7,17 +7,20 @@ class Navbar extends PureComponent {
       {
         id: 1,
         path: '/',
-        text: 'Books',
+        text: 'BOOKS',
       },
       {
         id: 2,
         path: '/categories',
-        text: 'Categories',
+        text: 'CATEGORIES',
       },
     ];
     return (
-      <nav className="navBar">
-        <ul>
+      <nav className="header shadow-sm mb-4 bg-white">
+        <div className="logo">
+          <h1 className="text-primary font-weight-bold">Bookstore CMS</h1>
+        </div>
+        <ul className="list">
           {links.map((link) => (
             <li key={link.id}>
               <NavLink to={link.path} className="active-link">

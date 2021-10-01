@@ -10,6 +10,11 @@ In the Bookstore is a website you can:
 - React
 - JavaScript
 - CSS
+- Bootstrap
+
+## Live Demo
+
+[Live Demo Link](https://medaminedev66.github.io/bookstore/)
 
 ### Setup
 - In terminal or Command line. Navigate to a directory in your local storage where you'd like to store the project and paste ```git clone https://github.com/medaminedev66/bookstore.git```

@@ -1,6 +1,5 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
-import styles from './books.module.css';
 
 const InputBook = (props) => {
   let title = '';
@@ -19,21 +18,30 @@ const InputBook = (props) => {
   };
 
   return (
-    <div className={styles.booksForm}>
-      <input
-        type="text"
-        placeholder="title of the book..."
-        onChange={addTitle}
-      />
-      <input
-        type="text"
-        placeholder="Category of the book..."
-        onChange={addAuthor}
-      />
-      <button type="button" onClick={submitBookToStore}>
-        Add Book
-      </button>
-    </div>
+    <>
+      <p className="add-title text-secondary font-weight-bold">ADD NEW BOOK</p>
+      <div className="booksForm">
+        <input
+          type="text"
+          className="form-control title"
+          placeholder="title of the book..."
+          onChange={addTitle}
+        />
+        <input
+          type="text"
+          className="form-control category"
+          placeholder="Category of the book..."
+          onChange={addAuthor}
+        />
+        <button
+          type="button"
+          className="btn btn-primary"
+          onClick={submitBookToStore}
+        >
+          Add Book
+        </button>
+      </div>
+    </>
   );
 };
 

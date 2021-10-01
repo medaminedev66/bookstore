@@ -29,9 +29,9 @@ const BooksContainer = () => {
   }, [dispatch]);
 
   return (
-    <div className="container">
+    <div className="book-page">
+      <BooksList className="book-list" removeBook={remove} books={books} />
       <InputBook addBook={submitBookToStore} />
-      <BooksList removeBook={remove} books={books} />
     </div>
   );
 };
