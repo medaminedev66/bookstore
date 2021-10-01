@@ -6,7 +6,8 @@ import store from './redux/configureStore';
 import './App.css';
 import BooksContainer from './components/Books/BooksContainer';
 import Categories from './components/Categories/Categories';
-import Navbar from './components/Navbar';
+import Navbar from './components/Main/Navbar';
+import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
   <React.StrictMode>
