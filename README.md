@@ -1,5 +1,5 @@
 # Books store
-In the Bookstore is a website you can:
+In the Bookstore website you can:
 
 - Display a list of books.
 - Add a book.
