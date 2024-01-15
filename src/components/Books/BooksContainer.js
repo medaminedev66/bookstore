@@ -9,7 +9,7 @@ const BooksContainer = () => {
   const books = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
 
-  const submitBookToStore = (title, category, author) => {
+  const submitBookToStore = (author, title, category) => {
     const newBook = {
       item_id: uuidv4(),
       author,
@@ -17,7 +17,6 @@ const BooksContainer = () => {
       category,
     };
 
-    // dispatch an action and pass it the newBook object (your action's payload)
     dispatch(sendData(newBook));
   };
 

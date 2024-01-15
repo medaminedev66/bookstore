@@ -24,6 +24,7 @@ export const fetchData = () => async (dispatch) => {
       item_id: element[0],
       title: Object.assign(...element[1]).title,
       category: Object.assign(...element[1]).category,
+      author: Object.assign(...element[1]).author,
     }));
 
     dispatch({
@@ -66,7 +67,7 @@ export const sendData = (book) => async (dispatch) => {
 
 export const removeBook = (book) => async (dispatch) => {
   fetch(
-    `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/mnWl6zWJHf5Fwk5ARAAR/books/${book.item_id}`,
+    `https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/4ZuKn7dXN1jUsQ5vDO1d/books/${book.item_id}`,
     {
       method: 'DELETE',
     },
@@ -86,6 +87,7 @@ const booksReducer = (state = initialState, action) => {
         ...state,
         {
           item_id: action.payload.item_id,
+          author: action.payload.author,
           title: action.payload.title,
           category: action.payload.category,
         },

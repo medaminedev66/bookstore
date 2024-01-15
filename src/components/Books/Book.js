@@ -13,7 +13,7 @@ const Book = (props) => {
       <div className="info">
         <p className="text-secondary font-weight-bold">{book.category}</p>
         <p className="book-title">{book.title}</p>
-        <p className="font-weight-light">Author</p>
+        <p className="font-weight-light">{book.author}</p>
         <button
           type="button"
           className="btn btn-secondary"

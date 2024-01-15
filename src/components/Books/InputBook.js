@@ -19,7 +19,7 @@ const InputBook = ({ addBook }) => {
   };
 
   const submitBookToStore = () => {
-    addBook(title, author, category);
+    addBook(author, title, category);
   };
 
   return (
