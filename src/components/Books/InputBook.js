@@ -1,7 +1,7 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
 
-const InputBook = (props) => {
+const InputBook = ({ addBook }) => {
   let title = '';
   let category = '';
 
@@ -14,7 +14,7 @@ const InputBook = (props) => {
   };
 
   const submitBookToStore = () => {
-    props.addBook(title, category);
+    addBook(title, category);
   };
 
   return (

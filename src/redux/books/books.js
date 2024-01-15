@@ -10,28 +10,34 @@ export const addBook = (payload) => ({
 });
 
 export const fetchData = () => async (dispatch) => {
-  const response = await fetch(
-    'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/mnWl6zWJHf5Fwk5ARAAR/books',
-  );
+  try {
+    const response = await fetch(
+      'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/4ZuKn7dXN1jUsQ5vDO1d/books',
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    const data = await response.json();
+    const entries = Object.entries(data);
 
-  const json = await response.json();
-  const entries = Object.entries(json);
+    const books = entries.map((element) => ({
+      item_id: element[0],
+      title: Object.assign(...element[1]).title,
+      category: Object.assign(...element[1]).category,
+    }));
 
-  const books = entries.map((element) => ({
-    item_id: element[0],
-    title: Object.assign(...element[1]).title,
-    category: Object.assign(...element[1]).category,
-  }));
-
-  dispatch({
-    type: FETCH_DATA,
-    payload: books,
-  });
+    dispatch({
+      type: FETCH_DATA,
+      payload: books,
+    });
+  } catch (error) {
+    throw Error(`Fetch error: ${error}`);
+  }
 };
 
 export const sendData = (book) => async (dispatch) => {
   fetch(
-    'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/mnWl6zWJHf5Fwk5ARAAR/books',
+    'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/4ZuKn7dXN1jUsQ5vDO1d/books',
     {
       method: 'POST',
       body: JSON.stringify({
