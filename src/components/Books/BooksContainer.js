@@ -9,9 +9,10 @@ const BooksContainer = () => {
   const books = useSelector((state) => state.booksReducer);
   const dispatch = useDispatch();
 
-  const submitBookToStore = (title, category) => {
+  const submitBookToStore = (title, category, author) => {
     const newBook = {
-      item_id: uuidv4(), // make sure it's unique
+      item_id: uuidv4(),
+      author,
       title,
       category,
     };

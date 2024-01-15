@@ -36,24 +36,32 @@ export const fetchData = () => async (dispatch) => {
 };
 
 export const sendData = (book) => async (dispatch) => {
-  fetch(
-    'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/4ZuKn7dXN1jUsQ5vDO1d/books',
-    {
-      method: 'POST',
-      body: JSON.stringify({
-        item_id: book.item_id,
-        title: book.title,
-        category: book.category,
-      }),
-      headers: {
-        'Content-type': 'application/json; charset=UTF-8',
+  try {
+    const response = await fetch(
+      'https://us-central1-bookstore-api-e63c8.cloudfunctions.net/bookstoreApi/apps/4ZuKn7dXN1jUsQ5vDO1d/books',
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          item_id: book.item_id,
+          author: book.author,
+          title: book.title,
+          category: book.category,
+        }),
       },
-    },
-  );
-  dispatch({
-    type: SEND_DATA,
-    payload: book,
-  });
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+    dispatch({
+      type: SEND_DATA,
+      payload: book,
+    });
+  } catch (error) {
+    throw Error(`Fetch error: ${error}`);
+  }
 };
 
 export const removeBook = (book) => async (dispatch) => {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 const InputBook = ({ addBook }) => {
   let title = '';
+  let author = '';
   let category = '';
 
   const addTitle = (e) => {
@@ -10,11 +11,15 @@ const InputBook = ({ addBook }) => {
   };
 
   const addAuthor = (e) => {
+    author = e.target.value;
+  };
+
+  const addCategory = (e) => {
     category = e.target.value;
   };
 
   const submitBookToStore = () => {
-    addBook(title, category);
+    addBook(title, author, category);
   };
 
   return (
@@ -30,8 +35,14 @@ const InputBook = ({ addBook }) => {
         <input
           type="text"
           className="form-control category"
-          placeholder="Category of the book..."
+          placeholder="Author of the book..."
           onChange={addAuthor}
+        />
+        <input
+          type="text"
+          className="form-control category"
+          placeholder="Category of the book..."
+          onChange={addCategory}
         />
         <button
           type="button"
