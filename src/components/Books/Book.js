@@ -1,7 +1,5 @@
 import { React } from 'react';
 import PropTypes from 'prop-types';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
 
 const Book = (props) => {
   const { book, removeBook } = props;
@@ -25,11 +23,10 @@ const Book = (props) => {
         </button>
       </div>
       <div className="completed">
-        <FontAwesomeIcon
-          icon={faCircleNotch}
-          size="4x"
-          className="text-primary"
-        />
+        <div className="circular-progress-container">
+          {/* eslint-disable-next-line react/self-closing-comp */}
+          <div className="circular-progress"></div>
+        </div>
         <div>
           <p className="percent">64%</p>
           <p>Completed</p>

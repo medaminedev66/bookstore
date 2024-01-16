@@ -11,19 +11,22 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Navbar />
-      <Switch>
-        <Route exact path="/">
-          <Provider store={store}>
+    <Provider store={store}>
+      <Router>
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
             <BooksContainer />
-          </Provider>
-        </Route>
-        <Route path="/categories">
-          <Categories />
-        </Route>
-      </Switch>
-    </Router>
+          </Route>
+          <Route exact path="/bookstore">
+            <BooksContainer />
+          </Route>
+          <Route path="/categories">
+            <Categories />
+          </Route>
+        </Switch>
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root'),
 );
